@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payslip Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Lobster&family=Satisfy&family=Silkscreen:wght@400;700&family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+    
+    <!-- ======================================= -->
+    <!--          THE FULL CSS IS HERE           -->
+    <!-- ======================================= -->
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: white;
+    padding: 0;
+}
+
+.main-content {
+    display: flex;
+    padding: 32px; 
+    gap: 32px; 
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 960px; 
+}
+
+    header {
+      position: relative;
+      text-align: center;
+      height: 120px; 
+      background-color: #5f06a8;
+      color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      width: 98%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 2;
+    }
+header p{
+    font-weight: 100;
+      font-size: 18px;
+      margin-top: 10px;
+}
+  
+    @keyframes moveCircles {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      50% {
+        transform: translateY(-50%) translateX(-50%);
+      }
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+    }
+
+    .banner-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: moveCircles 10s infinite linear;
+    }
+
+    .circle:nth-child(1) {
+      top: 10%;
+      left: 20%;
+      animation-duration: 8s;
+    }
+
+    .circle:nth-child(2) {
+      top: 50%;
+      left: 70%;
+      animation-duration: 12s;
+    }
+
+    .circle:nth-child(3) {
+      top: 80%;
+      left: 40%;
+      animation-duration: 15s;
+    }
+
+.payslipcontainer {
+    background: linear-gradient(rgba(232, 232, 255, 0.763),rgba(255, 223, 255, 0.772));
+    width: 100%;
+    max-width: 500px;
+    padding-left: 48px; 
+    padding-right: 64px; 
+    padding-bottom: 32px; 
+    border-radius: 10px;
+   margin-left: auto;
+   margin-right: auto;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.payslipcontainer h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #580b01;
+}
+
+.input-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 13.6px;
+    margin-bottom: 8px;
+    color: #3d3d3d;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 12.8px;
+    border-radius: 5px;
+}
+
+.btn,
+.btn * {
+    border: 0 solid;
+    box-sizing: border-box;
+}
+
+.btn {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: button;
+    background-color: #000000;
+    background-image: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 80%;
+    font-weight: 900;
+    line-height: 1.5;
+    margin: 0;
+
+    -webkit-mask: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.btn:disabled {
+    cursor: default;
+}
+
+.btn:-moz-focusring {
+    outline: auto;
+}
+
+.btn svg {
+    display: block;
+}
+
+.btn [hidden] {
+    display: none;
+}
+
+.btn {
+    border-radius: 99rem;
+    border-width: 2px;
+    overflow: hidden;
+    padding: 0.64rem 2.4rem;
+    position: relative;
+}
+
+.btn span {
+    mix-blend-mode: difference;
+}
+
+.btn:after,
+.btn:before {
+    background: linear-gradient(90deg, #fff 25%, transparent 0, transparent 50%, #fff 0, #fff 75%, transparent 0);
+    content: "";
+    inset: 0;
+    position: absolute;
+    transform: translateY(var(--progress, 100%));
+    transition: transform 0.2s ease;
+}
+
+.btn:after {
+    --progress: -100%;
+    background: linear-gradient(90deg, transparent 0, transparent 25%, #fff 0, #fff 50%, transparent 0, transparent 75%, #fff 0);
+    z-index: -1;
+}
+
+.btn:hover:after,
+.btn:hover:before {
+    --progress: 0;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+    .payslipcontainer {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .input-group input {
+        padding: 10px;
+        font-size: 12px;
+    }
+}
+
+.dark-mode{
+    background-color: #000000;
+    color: #ffffff;
+}
+.dark-mode .payslipcontainer {
+    background: linear-gradient(rgba(30, 30, 40, 0.9), rgba(40, 20, 40, 0.9));
+    box-shadow: 0 4px 6px rgba(220, 220, 220, 0.3);
+    border: 1px solid #333;
+}
+.dark-mode .payslipcontainer h2 {
+    color: #bb86fc;
+}
+.dark-mode .input-group label {
+    color: #ffffff;
+}
+.dark-mode .input-group input {
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #444;
+}
+.dark-mode .btn {
+    background-color: #333;
+    color: #ffffff;
+    border: 2px solid #bb86fc;
+}
+.dark-mode .btn:hover {
+    background-color: #676767;
+    color: #f7f7f7;
+}
+.dark-mode header {
+    background-color: #2a044a;
+}
+.dark-mode header h1 {
+    color: #bb86fc;
+}
+.dark-mode header p {
+    color: #ffffff;
+}
+.dark-mode .circle {
+    background: rgba(187, 134, 252, 0.1);
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="banner-background">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+        <h1>Payslip Generator<h1>
+            <p>Track you payslip details here</p>
+      </header>
+    <div class="main-content">
+        <div class="payslipcontainer">
+            <h2>Employee Details Form</h2>
+            <form id="payslipForm">
+                <div class="input-group">
+                    <label for="employeeName">Employee Name</label>
+                    <input id="employeeName" type="text" placeholder="Enter your Name" required minlength="3" maxlength="50"
+                        pattern="^[A-Za-z]+(?:\.[A-Za-z]+)*(?: [A-Za-z]+)*(?:\.[A-Za-z]+){0,3}$"
+                        title="Username cannot start with a space, no consecutive spaces allowed, maximum 8 spaces and 3 periods allowed.">
+                </div>
+                <div class="input-group">
+                    <label for="employeeID">Employee Id</label>
+                    <input id="employeeId" type="text" placeholder="Enter your EmployeeID" required minlength="7" maxlength="7"
+                        pattern="^[A-Z]{3}0(?!000)[0-9]{3}$"
+                        title="Employee ID should be in the format: 3 uppercase letters followed by 4 digits, starting from 0001 (cannot be 0000)">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" placeholder="Enter your Email ID" required minlength="8" maxlength="50"
+                        title="Please enter a valid email address">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Enter your password (min 1 letter, 1 number, 1 symbol)" required
+                        minlength="5" maxlength="50" pattern="^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[\W_]).{5,}$"
+                        title="Password must be at least 5 characters long and include at least one letter, one number, and one symbol (e.g., @, #, $, %)">
+                </div>
+                <div class="input-group">
+                    <label for="startMonth">Select Start Month:</label>
+                    <input type="month" id="startMonth" name="startMonth" placeholder="Select start month" required>
+                </div>
+                <div class="input-group">
+                    <label for="endMonth">Select End Month (optional):</label>
+                    <input type="month" id="endMonth" name="endMonth" placeholder="Select end month">
+                </div>
+                <button type="submit" class="btn"><span>Submit for Approval</span></button>
+            </form>
+            <p id="form-message" style="margin-top: 15px; font-weight: bold; word-wrap: break-word;"></p>
+        </div>
+    </div>
+    
+    <!-- The JavaScript section from my previous response remains the same and is correct. -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("payslipForm");
+            const messageEl = document.getElementById("form-message");
+
+            form.addEventListener("submit", async function (event) {
+                event.preventDefault(); 
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                messageEl.textContent = 'Submitting...';
+                messageEl.style.color = 'blue';
+
+                const formData = {
+                    employeeName: document.getElementById('employeeName').value,
+                    employeeId: document.getElementById('employeeId').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    startMonth: document.getElementById('startMonth').value,
+                    endMonth: document.getElementById('endMonth').value || null
+                };
+                
+                try {
+                    const response = await fetch('/api/payslip', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData),
+                    });
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        messageEl.textContent = "✅ " + result.message;
+                        messageEl.style.color = 'green';
+                        form.reset();
+                    } else {
+                        let errorMessage = `❌ ${result.error}`;
+                        if (result.details) {
+                            errorMessage += `<br><small style="color: #666;">Details: ${result.details}</small>`;
+                        }
+                        messageEl.innerHTML = errorMessage;
+                        messageEl.style.color = 'red';
+                    }
+                } catch (error) {
+                    console.error('Network or client-side error:', error);
+                    messageEl.textContent = '❌ A network error occurred. Is the server running?';
+                    messageEl.style.color = 'red';
+                } finally {
+                    submitButton.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
