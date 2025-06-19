@@ -354,7 +354,7 @@ header p{
                 };
                 
                 try {
-                    // MODIFIED: Use the full server URL
+                    // *** CRITICAL: This MUST be the full URL for the user's workflow ***
                     const response = await fetch('http://localhost:3000/api/payslip', {
                         method: 'POST',
                         headers: {
