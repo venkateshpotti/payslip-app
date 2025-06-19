@@ -112,7 +112,7 @@
             // --- API Call Function ---
             async function updateStatus(id, action) {
                 try {
-                    const response = await fetch(`/api/payslip/${action}/${id}`, {
+                    const response = await fetch(`http://localhost:3000/api/payslip/${action}/${id}`, {
                         method: 'PUT'
                     });
                     if (response.ok) {
