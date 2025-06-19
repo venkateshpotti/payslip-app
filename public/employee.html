@@ -332,7 +332,6 @@ header p{
         </div>
     </div>
     
-    <!-- The JavaScript section from my previous response remains the same and is correct. -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const form = document.getElementById("payslipForm");
@@ -355,7 +354,8 @@ header p{
                 };
                 
                 try {
-                    const response = await fetch('/api/payslip', {
+                    // MODIFIED: Use the full server URL
+                    const response = await fetch('http://localhost:3000/api/payslip', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
