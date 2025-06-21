@@ -89,7 +89,7 @@
             async function loadAllData() {
                 loadingMessage.style.display = 'block';
                 try {
-                    const response = await fetch('/api/payslips/all');
+                    const response = await fetch('http://localhost:3000/api/payslips/all');
                     if (!response.ok) throw new Error('Server error');
                     const requests = await response.json();
                     
